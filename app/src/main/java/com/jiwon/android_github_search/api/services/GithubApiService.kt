@@ -18,7 +18,6 @@ class GithubApiService {
 
     companion object{
         val BASE_URL = "https://api.github.com/"
-
         val ApiGson = GsonBuilder()
             .registerTypeAdapter(GithubRepositoryResponse::class.java, GithubRepositoryResponse.deserializer)
             .create()

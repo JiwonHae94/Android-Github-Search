@@ -10,7 +10,7 @@ import java.lang.reflect.Type
 
 data class GithubRepository(
     @SerializedName("name") val name: String,
-    @SerializedName("owner") val owner: String,
+    @SerializedName("owner") val owner: GithubRepositoryOwner,
     @SerializedName("private") val isPrivate: Boolean,
     @SerializedName("description") val description: String?,
     @SerializedName("url") val url: String,
@@ -30,7 +30,7 @@ data class GithubRepository(
 
                 return GithubRepository(
                     name = jsonObj["name"].asString,
-                    owner = "",
+                    owner = GithubRepositoryOwner.parser.fromJson(jsonObj["owner"].asJsonObject, GithubRepositoryOwner::class.java),
                     isPrivate = jsonObj["private"].asBoolean,
                     description = jsonObj["description"].asString,
                     url = jsonObj["url"].asString,
