@@ -8,11 +8,10 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.withContext
 
-class NetworkViewModel(
+class GithubViewModel(
     val githubServiceRepository: GithubServiceRepository
 ) : ViewModel(){
-    private val TAG = NetworkViewModel::class.java.simpleName
-
+    private val TAG = GithubViewModel::class.java.simpleName
 
     suspend fun searchRepository(
         query : String
