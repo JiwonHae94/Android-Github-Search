@@ -2,6 +2,7 @@ package com.jiwon.android_github_search.repository
 
 import android.util.Log
 import com.jiwon.android_github_search.api.services.GithubApiService
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onEach
 
