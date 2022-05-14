@@ -13,8 +13,6 @@ class GithubServiceRepository(
 
     suspend fun searchRepository(query : String) = flow {
         val out = api.searchRepository(query)
-        out.repositories.forEach {
-            emit(it)
-        }
+        emit(out.repositories)
     }
 }

@@ -3,25 +3,33 @@ package com.jiwon.android_github_search.views.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.jiwon.android_github_search.data.GithubRepository
 import com.jiwon.android_github_search.databinding.GithubRepoItemBinding
 
 class GithubRepositoryAdapter : RecyclerView.Adapter<GithubRepositoryAdapter.GithubRepoViewHolder>() {
-    private val repositories = ArrayList<GithubRepository>()
+    private var repositories = emptyList<GithubRepository>()
+
+    internal fun updateRepositories(
+        repositories: List<GithubRepository>
+    ){
+        this.repositories = repositories
+
+        // notify update to the data
+        notifyDataSetChanged()
+    }
 
     class GithubRepoViewHolder(
-        private val parent : ViewGroup,
         private val binding : GithubRepoItemBinding
     ) : RecyclerView.ViewHolder(binding.root){
         fun bind(repo : GithubRepository){
-
+            binding.repository = repo
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubRepoViewHolder {
         return GithubRepoViewHolder(
-            parent,
             GithubRepoItemBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -36,6 +44,18 @@ class GithubRepositoryAdapter : RecyclerView.Adapter<GithubRepositoryAdapter.Git
 
     override fun getItemCount(): Int {
         return repositories.size
+    }
+
+    companion object{
+
+        @JvmStatic
+        @BindingAdapter("repositories")
+        fun bindRepository(view:RecyclerView, repositories : MutableLiveData<List<GithubRepository>>){
+            val adapter = view.adapter as GithubRepositoryAdapter
+            adapter.updateRepositories(repositories.value ?: emptyList())
+        }
+
+
     }
 
 
