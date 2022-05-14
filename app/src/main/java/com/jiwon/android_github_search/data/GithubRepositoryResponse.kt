@@ -1,5 +1,6 @@
 package com.jiwon.android_github_search.data
 
+import android.util.Log
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
@@ -22,7 +23,7 @@ data class GithubRepositoryResponse(
                 context: JsonDeserializationContext?,
             ): GithubRepositoryResponse {
                 val jsonObject = json?.asJsonObject ?: throw NullPointerException("Response contains null response")
-
+                Log.d(TAG,"reponse : $jsonObject")
                 return GithubRepositoryResponse(
                     totalRepoCount = jsonObject["total_count"].asLong,
                     isResultIncomplete = jsonObject["incomplete_results"].asBoolean,
