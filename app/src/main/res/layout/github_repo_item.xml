@@ -5,6 +5,10 @@
 
     <data>
         <import type="com.jiwon.android_github_search.data.GithubRepository"/>
+        <import type="android.icu.text.CompactDecimalFormat"/>
+        <variable
+            name="stargazer_format"
+            type="CompactDecimalFormat" />
         <variable
             name="repository"
             type="GithubRepository" />
@@ -17,46 +21,51 @@
         <ImageView
             android:id="@+id/icon_repo"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            app:layout_constraintWidth_percent="0.05"
-            android:src="@drawable/icon_repo"
+            android:layout_height="0dp"
             android:adjustViewBounds="true"
+            android:src="@drawable/icon_repo"
+            android:padding="2sp"
+            app:layout_constraintTop_toTopOf="@id/repo_name"
+            app:layout_constraintBottom_toBottomOf="@id/repo_name"
+            app:layout_constraintWidth_percent="0.05"
+            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintLeft_toLeftOf="parent"/>
 
         <TextView
-            android:text="@{repository.fullName}"
+            android:id="@+id/repo_name"
+            android:text='@{repository.owner.login + "/" + repository.fullName}'
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            app:layout_constraintWidth_percent="0.3"
+            android:layout_height="wrap_content"
             android:textColor="@color/black"
-            android:textSize="12sp"
-            android:layout_marginLeft="5sp"
-            app:layout_constraintLeft_toRightOf="@id/icon_repo"/>
+            android:maxLines="1"
+            android:layout_marginTop="2sp"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="5sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/icon_repo"
+            app:layout_constraintRight_toRightOf="parent"/>
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/repo_description"
+            android:text="@{repository.description}"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintWidth_percent="0.05">
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:maxLines="1"
+            app:layout_constraintTop_toBottomOf="@id/repo_name"
+            app:layout_constraintRight_toRightOf="@id/repo_name"
+            app:layout_constraintLeft_toLeftOf="@id/repo_name"/>
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:adjustViewBounds="true"
-                android:src="@drawable/icon_star_filled" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:textSize="15sp"
-                android:gravity="center"
-                android:text="0"/>
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/repo_stargazer_cnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/repo_description"
+            app:layout_constraintLeft_toLeftOf="@id/repo_description"
+            android:drawableStart="@drawable/icon_star"
+            android:gravity="center"
+            android:drawablePadding="1sp"
+            android:text="@{stargazer_format.format(repository.stargazersCount)}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
