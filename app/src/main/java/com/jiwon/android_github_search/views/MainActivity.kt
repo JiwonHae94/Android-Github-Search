@@ -2,8 +2,10 @@ package com.jiwon.android_github_search.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.KeyEvent
 import com.jiwon.android_github_search.viewmodels.GithubViewModel
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jiwon.android_github_search.databinding.ActivityMainBinding
 import com.jiwon.android_github_search.views.adapters.GithubRepositoryAdapter
@@ -21,16 +23,21 @@ class MainActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         setContentView(binding.root)
 
-    }
-
-    override fun onStart() {
-        super.onStart()
-
         val layoutManager = LinearLayoutManager(this)
         binding.repositoryView.layoutManager = layoutManager
         binding.repositoryView.adapter = GithubRepositoryAdapter()
+        binding.repositoryView.addItemDecoration(
+            DividerItemDecoration(binding.repositoryView.context, layoutManager.orientation)
+        )
 
-
-        viewmodel.searchRepository("yolo")
+        // set search edittext on enter event handle
+        binding.searchEdittext.setOnKeyListener { view, keyCode, keyEvent ->
+            if(keyCode == KeyEvent.KEYCODE_ENTER){
+                viewmodel.searchRepository(binding.searchEdittext.text.toString())
+                true
+            }else{
+                false
+            }
+        }
     }
 }

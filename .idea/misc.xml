@@ -3,7 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/github_repo_item.xml" value="0.33" />
         <entry key="app/src/main/res/layout/recycler_item_github_repo.xml" value="0.1" />
       </map>
