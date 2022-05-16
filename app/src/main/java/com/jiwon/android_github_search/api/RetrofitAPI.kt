@@ -14,7 +14,6 @@ object RetrofitAPI {
 
     private val httpClient = OkHttpClient.Builder()
         .addInterceptor(httpLoggingInterceptor)
-        //.addInterceptor(GithubApiService.applicationInterceptor)
         .build()
 
 

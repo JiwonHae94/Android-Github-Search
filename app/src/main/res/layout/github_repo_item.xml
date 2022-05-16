@@ -23,7 +23,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:adjustViewBounds="true"
-            android:src="@drawable/icon_repo"
+            android:src="@drawable/ic_repo"
             android:padding="2sp"
             app:layout_constraintTop_toTopOf="@id/repo_name"
             app:layout_constraintBottom_toBottomOf="@id/repo_name"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/repo_description"
             app:layout_constraintLeft_toLeftOf="@id/repo_description"
-            android:drawableStart="@drawable/icon_star"
+            android:drawableStart="@drawable/ic_star"
             android:gravity="center"
             android:drawablePadding="1sp"
             android:text="@{stargazer_format.format(repository.stargazersCount)}"/>

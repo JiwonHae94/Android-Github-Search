@@ -1,8 +1,10 @@
 package com.jiwon.android_github_search.views
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.inputmethod.InputMethodManager
 import com.jiwon.android_github_search.viewmodels.GithubViewModel
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -39,5 +41,13 @@ class MainActivity : AppCompatActivity() {
                 false
             }
         }
+
+        // hide keyboard when error
+        viewmodel.responseError.observe(this, {
+            if(it != null){
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+                imm?.hideSoftInputFromWindow(currentFocus?.windowToken, 0)
+            }
+        })
     }
 }

@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="android.view.View"/>
         <variable
             name="viewmodel"
             type="com.jiwon.android_github_search.viewmodels.GithubViewModel" />
@@ -15,12 +16,11 @@
         tools:context=".views.MainActivity"
         android:background="#24292E">
 
-
         <ImageView
             android:id="@+id/icon_github"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/icon_github_light"
+            android:src="@drawable/ic_github_light"
             android:scaleType="centerInside"
             android:adjustViewBounds="true"
             android:layout_gravity="center"
@@ -56,6 +56,42 @@
             android:scrollbarFadeDuration="1"
             app:layout_constraintTop_toBottomOf="@id/search_edittext"
             app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:visibility="@{viewmodel.responseError == null ? View.GONE : View.VISIBLE }"
+            app:layout_constraintLeft_toLeftOf="@id/repository_view"
+            app:layout_constraintRight_toRightOf="@id/repository_view"
+            app:layout_constraintTop_toTopOf="@id/repository_view"
+            app:layout_constraintBottom_toBottomOf="@id/repository_view">
+
+            <ImageView
+                android:id="@+id/response_error_img"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@drawable/ic_wrong"
+                app:layout_constraintVertical_bias="0.4"
+                app:layout_constraintWidth_percent="0.4"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10sp"
+                android:textColor="@android:color/darker_gray"
+                android:text="Oop! Something went wrong..."
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/response_error_img"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -30,21 +30,6 @@ class GithubApiService {
             .registerTypeAdapter(GithubRepositoryResponse::class.java, GithubRepositoryResponse.deserializer)
             .create()
 
-
-//        val applicationInterceptor = object : Interceptor{
-//            override fun intercept(chain: Interceptor.Chain): Response {
-//
-//                Log.d("REST API", "interceptor : ${chain.call().execute().code}")
-//                when(chain.call().execute().code){
-//                    StatusCode.Success.code -> NullPointerException(StatusCode.Success.code.toString())
-//                    StatusCode.NotModified.code -> NullPointerException(StatusCode.NotModified.code.toString())
-//                    StatusCode.Forbidden.code -> NullPointerException(StatusCode.Forbidden.code.toString())
-//                    StatusCode.ResourceNotFound.code -> NullPointerException(StatusCode.ResourceNotFound.code.toString())
-//                    StatusCode.ValidationFailed.code -> NullPointerException(StatusCode.ValidationFailed.code.toString())
-//                }
-//                return chain.proceed(chain.request())
-//            }
-//        }
     }
 
 
