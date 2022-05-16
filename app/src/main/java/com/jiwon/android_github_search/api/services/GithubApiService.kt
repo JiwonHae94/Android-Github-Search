@@ -14,18 +14,8 @@ class GithubApiService {
         ) : GithubRepositoryResponse
     }
 
-    sealed class StatusCode(
-        val code : Int
-    ) {
-        object Success : StatusCode(200)
-        object NotModified : StatusCode(304)
-        object Forbidden : StatusCode(403)
-        object ResourceNotFound : StatusCode(404)
-        object ValidationFailed : StatusCode(422)
-    }
-
     companion object{
-        val BASE_URL = "https://github.developer.com/"//"https://api.github.com/"
+        val BASE_URL = "https://api.github.com/"
         val ApiGson = GsonBuilder()
             .registerTypeAdapter(GithubRepositoryResponse::class.java, GithubRepositoryResponse.deserializer)
             .create()

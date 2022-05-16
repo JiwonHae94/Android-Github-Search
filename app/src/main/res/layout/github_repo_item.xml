@@ -67,6 +67,18 @@
             android:drawablePadding="1sp"
             android:text="@{stargazer_format.format(repository.stargazersCount)}"/>
 
+        <TextView
+            android:id="@+id/language_used"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/repo_stargazer_cnt"
+            app:layout_constraintBottom_toBottomOf="@id/repo_stargazer_cnt"
+            app:layout_constraintLeft_toRightOf="@id/repo_stargazer_cnt"
+            android:gravity="center"
+            android:layout_marginLeft="10sp"
+            android:text="@{repository.language}"/>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
