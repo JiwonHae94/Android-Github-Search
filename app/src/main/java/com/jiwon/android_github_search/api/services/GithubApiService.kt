@@ -1,6 +1,5 @@
 package com.jiwon.android_github_search.api.services
 
-import android.util.Log
 import com.google.gson.GsonBuilder
 import com.jiwon.android_github_search.data.GithubRepositoryResponse
 import retrofit2.http.GET

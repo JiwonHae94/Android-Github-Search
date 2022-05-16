@@ -1,7 +1,6 @@
 package com.jiwon.android_github_search.api
 
 import com.google.gson.Gson
-import com.jiwon.android_github_search.api.services.GithubApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

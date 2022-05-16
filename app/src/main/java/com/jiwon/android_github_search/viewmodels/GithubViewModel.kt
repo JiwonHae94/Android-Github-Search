@@ -51,6 +51,7 @@ class GithubViewModel @Inject constructor(
         errorCode : Int,
         errorMessage : String
     ){
+        Log.e(TAG, "rest api error $errorMessage (#$errorCode)")
         responseError.postValue(ResponseError(errorCode, errorMessage))
     }
 }
